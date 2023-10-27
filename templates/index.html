@@ -9,8 +9,10 @@
     <h1>Task Master</h1>
     <form action="/" method="POST">
         <input type="text" name="content" id="content">
-        <input type="submit" value="Add Task">
+        <input type="submit" value="Search">
     </form>
+    <button><a href="/delete">Delete</a></button>
+    <h2>Cheapeast is {{ cheapest }}</h2>
     {% if meds|length < 1 %}
     <h4> There are no tasks. Use the box above!</h4>
     {% else %}
@@ -32,11 +34,6 @@
             <td>{{ med.price }}</td>
             <td>{{ med.moh }}</td>
             <td>{{ med.lu }}</td>
-            <td>
-                <a href="/delete">Delete</a>
-                <br>
-                <a href="/update/{{med.id}}">Update</a>
-            </td>
         </tr>
         {% endfor %}
     </table>

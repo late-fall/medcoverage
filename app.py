@@ -1,6 +1,7 @@
 from flask import Flask, render_template, url_for, request, redirect
 from flask_sqlalchemy import SQLAlchemy
 from datetime import datetime
+from sqlalchemy import or_
 
 app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///medications.db'
@@ -24,15 +25,16 @@ class Meds(db.Model):
 @app.route('/', methods=['POST','GET']) # adding methods
 def index():
     meds = ''
+    cheapest = ''
     if request.method == 'POST':
         search = request.form['content']
-        generic_name = db.session.query(Meds).filter(Meds.brand.like('%'+ search +'%')).first().generic
-        if generic_name:
-            meds = db.session.query(Meds).filter(Meds.generic.like('%'+ search +'%'), 
-                                                 Meds.generic.like('%' + generic_name + '%')).all()
-        else:
-            meds = db.session.query(Meds).filter(Meds.generic.like('%'+ search +'%')).all()
-    return render_template('index.html', meds = meds)
+        generic_name = db.session.query(Meds).filter(or_(Meds.generic.like('%'+ search +'%'), 
+                                                 Meds.brand.like('%' + search + '%'))).first()
+        name = generic_name.generic.split(' ', 1)[0]
+        print(name)
+        meds = db.session.query(Meds).filter(Meds.generic.like('%'+ name +'%')).order_by(Meds.price - Meds.moh).all()
+        cheapest = meds[0].brand
+    return render_template('index.html', meds = meds, cheapest = cheapest)
     
 @app.route('/delete/')
 def delete():

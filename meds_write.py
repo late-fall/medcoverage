@@ -8,7 +8,7 @@ schema_file = 'schema.sql'
 with open(schema_file, 'r') as rf:
     schema = rf.read()
 
-url = "https://www.formulary.health.gov.on.ca/formulary/results.xhtml?q=keflex&type=2"
+url = "https://www.formulary.health.gov.on.ca/formulary/results.xhtml?q=covers&type=2"
 
 result = requests.get(url)
 doc = BeautifulSoup(result.text, "html.parser")

@@ -3,57 +3,40 @@ from flask_sqlalchemy import SQLAlchemy
 from datetime import datetime
 
 app = Flask(__name__)
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///test.db'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///medications.db'
 db = SQLAlchemy(app)
 
-class Todo(db.Model):
-    id = db.Column(db.Integer, primary_key = True)
-    content = db.Column(db.String(200), nullable = False)
-    date_created = db.Column(db.DateTime, default=datetime.utcnow)
+class Meds(db.Model):
+    # id = db.Column(db.Integer, primary_key = True)
+    # content = db.Column(db.String(200), nullable = False)
+    # date_created = db.Column(db.DateTime, default=datetime.utcnow)
+
+    din = db.Column(db.Integer, primary_key = True)
+    generic = db.Column(db.String(200))
+    brand = db.Column(db.String(200))
+    price = db.Column(db.String(100))
+    moh = db.Column(db.String(100))
+    lu = db.Column(db.String(100))  
 
     def __repr__(self):
-        return '<Task %r>' % self.id
+        return '<Meds %r>' % self.id
 
 @app.route('/', methods=['POST','GET']) # adding methods
 def index():
+    meds = ''
     if request.method == 'POST':
-        task_content = request.form['content']
-        new_task = Todo(content=task_content)
-
-        try:
-            db.session.add(new_task)
-            db.session.commit()
-            return redirect('/')
-        except:
-            return "There was an issue adding your task"
-    else:
-        tasks = Todo.query.order_by(Todo.date_created).all() # look at all the database and return all of them
-        return render_template('index.html', tasks=tasks)
+        search = request.form['content']
+        generic_name = db.session.query(Meds).filter(Meds.brand.like('%'+ search +'%')).first().generic
+        if generic_name:
+            meds = db.session.query(Meds).filter(Meds.generic.like('%'+ search +'%'), 
+                                                 Meds.generic.like('%' + generic_name + '%')).all()
+        else:
+            meds = db.session.query(Meds).filter(Meds.generic.like('%'+ search +'%')).all()
+    return render_template('index.html', meds = meds)
     
-@app.route('/delete/<int:id>')
-def delete(id):
-    task_to_delete = Todo.query.get_or_404(id) # attempt to get by ID or it will 404
-    try:
-        db.session.delete(task_to_delete)
-        db.session.commit()
-        return redirect('/')
-    except:
-        return 'There was a problem deleting that task'
-
-@app.route('/update/<int:id>', methods=['GET','POST'])
-def update(id):
-    task = Todo.query.get_or_404(id)
-
-    if request.method == 'POST':
-        task.content = request.form['content']
-
-        try:
-            db.session.commit()
-            return redirect('/')
-        except:
-            return 'There was a problem updating'
-    else:
-        return render_template('update.html', task=task)
+@app.route('/delete/')
+def delete():
+    return render_template('index.html', meds='')
 
 if __name__ == "__main__":
     app.run(debug = True)

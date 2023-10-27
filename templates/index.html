@@ -11,24 +11,31 @@
         <input type="text" name="content" id="content">
         <input type="submit" value="Add Task">
     </form>
-    {% if tasks|length < 1 %}
+    {% if meds|length < 1 %}
     <h4> There are no tasks. Use the box above!</h4>
     {% else %}
 
     <table>
         <tr>
-            <th>Task</th>
-            <th>Added</th>
-            <th>Actions</th>
+            <th>DIN</th>
+            <th>Generic Name</th>
+            <th>Brand Name</th>
+            <th>Price</th>
+            <th>Government Pays</th>
+            <th>LU code</th>
         </tr>
-        {% for task in tasks %}
+        {% for med in meds %}
         <tr>
-            <td>{{ task.content }}</td>
-            <td>{{ task.date_created.date() }}</td>
+            <td>{{ med.din }}</td>
+            <td>{{ med.generic }}</td>
+            <td>{{ med.brand }}</td>
+            <td>{{ med.price }}</td>
+            <td>{{ med.moh }}</td>
+            <td>{{ med.lu }}</td>
             <td>
-                <a href="/delete/{{task.id}}">Delete</a>
+                <a href="/delete">Delete</a>
                 <br>
-                <a href="/update/{{task.id}}">Update</a>
+                <a href="/update/{{med.id}}">Update</a>
             </td>
         </tr>
         {% endfor %}

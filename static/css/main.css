@@ -1,14 +1,16 @@
 body, html {
     margin: 0;
-    font-family: sans-serif;
+    font-family: "Helvetica Neue", sans-serif;
 }
 
 .content {
+    text-align: center;
     margin: 0 auto;
-    width: 400px;
+    max-width: 600px;
 }
 
 table, td, th {
+    max-width: 500px;
     border: 1px solid #aaa;
 }
 

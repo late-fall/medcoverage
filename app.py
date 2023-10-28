@@ -33,8 +33,16 @@ def index():
         name = generic_name.generic.split(' ', 1)[0]
         print(name)
         meds = db.session.query(Meds).filter(Meds.generic.like('%'+ name +'%')).order_by(Meds.price - Meds.moh).all()
-        cheapest = meds[0].brand
-    return render_template('index.html', meds = meds, cheapest = cheapest)
+        final_prices = []
+        for med in meds:
+            try:
+                final_prices.append(format(float(med.price) - float(med.moh),".2f"))
+            except:
+                final_prices.append('n/a')
+        print(final_prices)
+        monthly_prices = [format(float(x) * 30, '.2f') if x != 'n/a' else 'n/a' for x in final_prices]
+        cheapest = 'Cheapest option is ' + meds[0].brand
+    return render_template('index.html', meds = meds, cheapest = cheapest, unit_prices = final_prices, monthly_prices = monthly_prices, n = len(meds))
     
 @app.route('/delete/')
 def delete():

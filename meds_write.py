@@ -8,7 +8,7 @@ schema_file = 'schema.sql'
 with open(schema_file, 'r') as rf:
     schema = rf.read()
 
-url = "https://www.formulary.health.gov.on.ca/formulary/results.xhtml?q=covers&type=2"
+url = "https://www.formulary.health.gov.on.ca/formulary/results.xhtml?q=myrbetriq&type=2"
 
 result = requests.get(url)
 doc = BeautifulSoup(result.text, "html.parser")
@@ -24,7 +24,11 @@ for med in medications:
     meds_data['brand'].append(med.contents[2].string)
     meds_data['price'].append(med.contents[4].string)
     meds_data['moh'].append(med.contents[5].string)
-    meds_data['lu'].append(med.contents[7].string)
+    med.contents[7].a['href'] = 'https://www.formulary.health.gov.on.ca/formulary/' + med.contents[7].a['href']
+    med.contents[7].a['target'] = '_blank'
+    meds_data['lu'].append(str(med.contents[7].a))
+
+print(med.contents[7].a)
 
 with sqlite3.connect(db_file) as conn:
     conn.executescript(schema)

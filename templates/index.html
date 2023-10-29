@@ -21,10 +21,10 @@
             <th>DIN</th>
             <th>Generic Name</th>
             <th>Brand Name</th>
-            <th>Price</th>
-            <th>Government Pays</th>
-            <th>Final price</th>
-            <th>Monthly price</th>
+            <th>Price($)</th>
+            <th>Government Pays ($)</th>
+            <th>Final price ($)</th>
+            <th>Monthly price ($)</th>
             <th>LU code</th>
         </tr>
         {% for i in range(n) %}
@@ -32,11 +32,11 @@
             <td>{{ meds[i].din }}</td>
             <td>{{ meds[i].generic }}</td>
             <td>{{ meds[i].brand }}</td>
-            <td>${{ meds[i].price }}</td>
-            <td>${{ meds[i].moh }}</td>
-            <td>${{ unit_prices[i] }}</td>
-            <td>${{ monthly_prices[i] }}</td>
-            <td>{{ meds[i].lu }}</td>
+            <td>{{ meds[i].price }}</td>
+            <td>{{ meds[i].moh }}</td>
+            <td>{{ final_prices[i] }}</td>
+            <td>{{ monthly_prices[i] }}</td>
+            <td>{{ meds[i].lu | safe }}</td>
         </tr>
         {% endfor %}
     </table>

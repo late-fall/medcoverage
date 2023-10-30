@@ -81,6 +81,8 @@ button a {
     color: #fff;
 }
 
-th {
+th, td {
+    max-width: 200px;
+    word-wrap: break-word;
     min-width: 80px;
 }

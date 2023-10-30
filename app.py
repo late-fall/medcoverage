@@ -49,7 +49,10 @@ def index():
 
         monthly_prices = [format(float(x) * 30, '.2f') if x != 'N/A' else 'N/A' for x in final_prices]
         
-        cheapest = 'Cheapest option is ' + meds[0].brand
+        for i in range(len(meds)):
+            if monthly_prices[i] != 'N/A':
+                cheapest = 'Cheapest option is ' + meds[i].brand + ' (' + meds[i].generic + ')' + ' at $' + str(monthly_prices[i])
+                break
     return render_template('index.html', meds = meds, cheapest = cheapest, final_prices = final_prices, monthly_prices = monthly_prices, n = len(meds))
     
 @app.route('/delete/')

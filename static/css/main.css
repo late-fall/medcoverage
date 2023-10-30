@@ -1,13 +1,25 @@
+:root {
+    --white: #d3d6db;
+    --greyish: #3a4750;
+    --darkgrey: #303841;
+    --redish: #be3144;
+}
+
 body, html {
     margin: 0;
     font-family: "Helvetica Neue", sans-serif;
 }
 
+h1 {
+    color: var(--white);
+}
+
 .content {
     text-align: center;
+    background-color: var(--greyish);
     margin: 0 auto;
-    width: 900px;
-    border: blue 1px solid;
+    padding: 20px 0px;
+    width: 640px;
 }
 
 #content {
@@ -20,6 +32,7 @@ table, td, th, tr {
 }
 
 table {
+    color: var(--white);
     table-layout: auto;
     width: 500px;
     margin: 0 auto;
@@ -28,11 +41,14 @@ table {
 
 th {
     height: 30px;
+    background-color: var(--darkgrey);
 }
 
 td {
+    background-color: var(--white);
     text-align: center;
     padding: 5px;
+    color: black;
 }
 
 form {
@@ -47,7 +63,7 @@ form {
 .button-9 {
   appearance: button;
   backface-visibility: hidden;
-  background-color: #405cf5;
+  background-color: var(--redish);
   border-radius: 6px;
   border-width: 0;
   box-shadow: rgba(50, 50, 93, .1) 0 0 0 1px inset,rgba(50, 50, 93, .1) 0 2px 5px 0,rgba(0, 0, 0, .07) 0 1px 1px 0;

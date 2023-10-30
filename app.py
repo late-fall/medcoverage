@@ -45,9 +45,9 @@ def index():
                 try:
                     final_prices.append(format(float(med.price),".2f"))
                 except:
-                    final_prices.append('n/a')
+                    final_prices.append('N/A')
 
-        monthly_prices = [format(float(x) * 30, '.2f') if x != 'n/a' else 'n/a' for x in final_prices]
+        monthly_prices = [format(float(x) * 30, '.2f') if x != 'N/A' else 'N/A' for x in final_prices]
         
         cheapest = 'Cheapest option is ' + meds[0].brand
     return render_template('index.html', meds = meds, cheapest = cheapest, final_prices = final_prices, monthly_prices = monthly_prices, n = len(meds))

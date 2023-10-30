@@ -8,15 +8,15 @@
 <div class="content">
     <h1>How much is my medication?</h1>
     <form action="/" method="POST">
-        <input type="text" name="content" id="content">
-        <input type="submit" value="Search">
+        <input type="text" name="content" id="content" placeholder="Enter Medication Name">
+        <button class="button-9" method="POST">SEARCH</a>
+        <button class="button-9"><a href="/delete">CLEAR</a></button>
     </form>
-    <button><a href="/delete">Delete</a></button>
     {% if meds|length < 1 %}
     <h4> There are no medications</h4>
     {% else %}
 
-    <table>
+    <table class="center">
         <tr>
             <th>DIN</th>
             <th>Generic Name</th>

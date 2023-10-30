@@ -6,17 +6,24 @@ body, html {
 .content {
     text-align: center;
     margin: 0 auto;
-    max-width: 600px;
+    width: 900px;
+    border: blue 1px solid;
 }
 
-table, td, th {
-    max-width: 500px;
+#content {
+    padding: 8px 20px;
+    border-radius: 5px;
+}
+
+table, td, th, tr {
     border: 1px solid #aaa;
 }
 
 table {
+    table-layout: auto;
+    width: 500px;
+    margin: 0 auto;
     border-collapse: collapse;
-    width: 100%;
 }
 
 th {
@@ -28,10 +35,52 @@ td {
     padding: 5px;
 }
 
-.form {
-    margin-top: 20px;
+form {
+    width: 400px;
+    display: grid;
+    grid-template-columns: 4fr 1fr 1fr;
+    margin: 20px auto;
+    gap: 10px;
 }
 
-#content {
-    width: 70%;
+
+.button-9 {
+  appearance: button;
+  backface-visibility: hidden;
+  background-color: #405cf5;
+  border-radius: 6px;
+  border-width: 0;
+  box-shadow: rgba(50, 50, 93, .1) 0 0 0 1px inset,rgba(50, 50, 93, .1) 0 2px 5px 0,rgba(0, 0, 0, .07) 0 1px 1px 0;
+  box-sizing: border-box;
+  color: #fff;
+  cursor: pointer;
+  font-family: -apple-system,system-ui,"Segoe UI",Roboto,"Helvetica Neue",Ubuntu,sans-serif;
+  outline: none;
+  overflow: hidden;
+  position: relative;
+  text-align: center;
+  text-transform: none;
+  transform: translateZ(0);
+  transition: all .2s,box-shadow .08s ease-in;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  width: 100%;
+}
+
+.button-9:disabled {
+  cursor: default;
+}
+
+.button-9:focus {
+  box-shadow: rgba(50, 50, 93, .1) 0 0 0 1px inset, rgba(50, 50, 93, .2) 0 6px 15px 0, rgba(0, 0, 0, .1) 0 2px 2px 0, rgba(50, 151, 211, .3) 0 0 0 4px;
+}
+
+button a {
+    text-decoration: none;
+    color: #fff;
+}
+
+th {
+    min-width: 80px;
 }

@@ -51,13 +51,13 @@ def index():
         
         for i in range(len(meds)):
             if monthly_prices[i] != 'N/A':
-                cheapest = 'Cheapest option is ' + meds[i].brand + ' (' + meds[i].generic + ')' + ' at $' + str(monthly_prices[i])
+                cheapest = meds[i].brand + ' (' + meds[i].generic + ')' + ' at $' + str(monthly_prices[i])
                 break
     return render_template('index.html', meds = meds, cheapest = cheapest, final_prices = final_prices, monthly_prices = monthly_prices, n = len(meds))
     
 @app.route('/delete/')
 def delete():
-    return render_template('index.html', meds='')
+    return render_template('index.html', meds=[])
 
 if __name__ == "__main__":
     app.run(debug = True)

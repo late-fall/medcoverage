@@ -14,9 +14,13 @@ h1 {
     color: var(--white);
 }
 
+h4 {
+    color: var(--white);
+}
+
 .content {
     text-align: center;
-    background-color: var(--greyish);
+    background-color: var(--darkgrey);
     margin: 0 auto;
     padding: 20px 0px;
     width: 640px;
@@ -25,6 +29,27 @@ h1 {
 #content {
     padding: 8px 20px;
     border-radius: 5px;
+}
+
+.explanations {
+    border-radius: 5px;
+    padding: 10px;
+    color: black;
+    display: flex;
+    flex-direction: column;
+    width: 400px;
+    margin: 10px auto;
+    background-color: var(--greyish);
+}
+
+.explanations p {
+    margin: 0;
+    margin-bottom: 7px;
+    text-align: left;
+}
+
+.bold {
+    font-weight: 700;
 }
 
 table, td, th, tr {
@@ -41,7 +66,8 @@ table {
 
 th {
     height: 30px;
-    background-color: var(--darkgrey);
+    background-color: var(--greyish);
+    color: black;
 }
 
 td {
@@ -49,6 +75,11 @@ td {
     text-align: center;
     padding: 5px;
     color: black;
+}
+
+.free {
+    color: var(--redish);
+    font-weight: 600;
 }
 
 form {

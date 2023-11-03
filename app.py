@@ -23,6 +23,7 @@ class Meds(db.Model):
 def index():
     meds = []
     cheapest = ''
+    nomed = ''
     final_prices = []
     monthly_prices = []
     if request.method == 'POST':
@@ -33,11 +34,16 @@ def index():
         # code to search for generic name when searched brand name.
         generic_name = db.session.query(Meds).filter(or_(Meds.generic.like('%'+ search +'%'), 
                                                  Meds.brand.like('%' + search + '%'))).first()
+        
+        if not generic_name:
+            return render_template('index.html', nomed = "Medication Does Not Exist")
+
         name = generic_name.generic.split(' ', 1)[0]
 
-        
         meds = db.session.query(Meds).filter(Meds.generic.like('%'+ name +'%')).order_by(Meds.price - Meds.moh).all()
         meds += db.session.query(Meds).filter(Meds.brand.like('%'+ search +'%')).order_by(Meds.price - Meds.moh).all()
+
+
         for med in meds:
             try:
                 final_prices.append(format(float(med.price) - float(med.moh),".2f"))

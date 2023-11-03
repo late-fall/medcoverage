@@ -16,6 +16,7 @@
     <h4> Search for your medication above.</h4>
     {% else %}
     <div class="explanations">
+        <h4 class="terminology">Terminology</h4>
         <p><span class="bold">Name :</span> Brand Name (Generic Name)</p>
         <p><span class="bold">Price :</span> Medication cost without coverage</p>
         <p><span class="bold">Government Pays :</span> Ontario's coverage if you are 25 and under, 65 and over, or under ODSP/OW</p>
@@ -47,6 +48,9 @@
     </table>
     
     <h2>Cheapest option is <u>{{ cheapest }}</u></h2>
+    {% endif %}
+    {% if nomed|length > 1 %}
+    <h2>{{ nomed }}</h2>
     {% endif %}
 </div>
 

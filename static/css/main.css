@@ -14,8 +14,19 @@ h1 {
     color: var(--white);
 }
 
+h2 {
+    color: var(--redish);
+}
+
 h4 {
     color: var(--white);
+}
+
+.terminology {
+    color: black;
+    margin: 5px 0px 10px;
+    text-decoration: underline;
+    font-size: 20px;
 }
 
 .content {
@@ -41,6 +52,7 @@ h4 {
     width: 400px;
     margin: 10px auto;
     background-color: var(--greyish);
+    border: solid 2px var(--redish);
 }
 
 .explanations p {

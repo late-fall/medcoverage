@@ -138,8 +138,10 @@ th, td {
 @media screen and (max-width: 600px) {
     .content {
         width: 390px;
+        background-color: var(--redish);
     }
     form {
         width: 350px;
     }
+
 }

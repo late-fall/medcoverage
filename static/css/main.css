@@ -29,6 +29,7 @@ h4 {
 #content {
     padding: 8px 20px;
     border-radius: 5px;
+    box-sizing: border-box;
 }
 
 .explanations {
@@ -136,6 +137,9 @@ th, td {
 
 @media screen and (max-width: 600px) {
     .content {
-        width: 600px;
+        width: 390px;
+    }
+    form {
+        width: 350px;
     }
 }

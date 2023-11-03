@@ -133,3 +133,9 @@ th, td {
     word-wrap: break-word;
     min-width: 80px;
 }
+
+@media screen and (max-width: 600px) {
+    .content {
+        width: 600px;
+    }
+}

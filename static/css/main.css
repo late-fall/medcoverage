@@ -135,10 +135,9 @@ th, td {
     min-width: 80px;
 }
 
-@media screen and (max-width: 600px) {
+@media (max-width: 600px) {
     .content {
         width: 390px;
-        background-color: var(--redish);
     }
     form {
         width: 350px;

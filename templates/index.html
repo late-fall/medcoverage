@@ -18,33 +18,38 @@
     <div class="explanations">
         <h4 class="terminology">Terminology</h4>
         <p><span class="bold">Name :</span> Brand Name (Generic Name)</p>
-        <p><span class="bold">Price :</span> Medication cost without coverage</p>
+        <p><span class="bold">Price :</span> Medication cost per dose without coverage</p>
         <p><span class="bold">Government Pays :</span> Ontario's coverage if you are 25 and under, 65 and over, or under ODSP/OW</p>
         <p><span class="bold">Monthly price :</span> Assumed 30 days with coverage</p>
         <p><span class="bold">LU code :</span> Special code required for coverage.</p>
     </div>
 
-    <table class="center">
-        <tr>
-            <th>Name</th>
-            <th>Price($)</th>
-            <th>Government Pays ($)</th>
-            <th>Monthly price ($)</th>
-            <th>LU code?</th>
-        </tr>
-        {% for i in range(n) %}
-        <tr>
-            <td>{{ meds[i].generic }}({{ meds[i].brand }})</td>
-            <td>{{ meds[i].price }}</td>
-            <td>{{ meds[i].moh }}</td>
-            {% if monthly_prices[i] == "0.00" %}
-                <td class="free">FREE</td>
-            {% else %}
-                <td>{{ monthly_prices[i] }}</td>
-            {% endif %}
-            <td>{{ meds[i].lu | safe }}</td>
-        </tr>
-        {% endfor %}
+    <table>
+        <thead>
+            <tr>
+                <th scope="col">Name</th>
+                <th scope="col">Price($)</th>
+                <th scope="col">Government Pays ($)</th>
+                <th scope="col">Monthly price ($)</th>
+                <th scope="col">LU code?</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for i in range(n) %}
+            <tr>
+                <td scope="row" data-label="Name">{{ meds[i].generic }}({{ meds[i].brand }})</td>
+                <td scope="row" data-label="Price($)">{{ meds[i].price }}</td>
+                <td scope="row" data-label="Government Pays ($)">{{ meds[i].moh }}</td>
+                {% if monthly_prices[i] == "0.00" %}
+                    <td class="free" scope="row" data-label="Monthly price ($)">FREE</td>
+                {% else %}
+                    <td scope="row" data-label="Monthly price ($)">{{ monthly_prices[i] }}</td>
+                {% endif %}
+                <td scope="row" data-label="LU code?">{{ meds[i].lu | safe }}</td>
+            </tr>
+            {% endfor %}
+
+        </tbody>
     </table>
     
     <h2>Cheapest option is <u>{{ cheapest }}</u></h2>

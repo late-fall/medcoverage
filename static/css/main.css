@@ -142,7 +142,7 @@ button a {
 }
 
 th, td {
-    max-width: 200px;
+    max-width: 350px;
     word-wrap: break-word;
     min-width: 80px;
 }
@@ -153,5 +153,50 @@ th, td {
     }
     form {
         width: 350px;
+    }
+    table {
+        border: none;
+        width: 350px;
+    }
+    table caption {
+        font-size: 1.3em;
+    }
+    .explanations {
+        width: 350px;
+    }
+    
+    table thead {
+        border: none;
+        clip: rect(0 0 0 0);
+        height: 1px;
+        margin: -1px;
+        overflow: hidden;
+        padding: 0;
+        position: absolute;
+        width: 1px;
+    }
+    
+    table tr {
+        border-bottom: 3px solid #ddd;
+        display: block;
+        max-width: 350px;
+        margin-bottom: .625em;
+    }
+
+    table td {
+    display: block;
+    font-size: .8em;
+    text-align: right;
+    }
+    
+    table td::before {
+        content: attr(data-label);
+        float: left;
+        font-weight: bold;
+        text-transform: uppercase;
+    }
+    
+    table td:last-child {
+        border-bottom: 0;
     }
 }

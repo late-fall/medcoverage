@@ -36,7 +36,7 @@ def index():
                                                  Meds.brand.like('%' + search + '%'))).first()
         
         if not generic_name:
-            return render_template('index.html', nomed = "Medication Does Not Exist")
+            return render_template('index.html', nomed = "Price Information Does Not Exist")
 
         name = generic_name.generic.split(' ', 1)[0]
 

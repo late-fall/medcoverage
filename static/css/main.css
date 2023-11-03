@@ -11,7 +11,7 @@ body, html {
 }
 
 h1 {
-    color: yellow;
+    color: var(--white);
 }
 
 h4 {

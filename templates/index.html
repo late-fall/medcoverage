@@ -37,7 +37,7 @@
         <tbody>
             {% for i in range(n) %}
             <tr>
-                <td scope="row" data-label="Name">{{ meds[i].generic }}({{ meds[i].brand }})</td>
+                <td scope="row" data-label="Name">{{ meds[i].generic }} ({{ meds[i].brand }})</td>
                 <td scope="row" data-label="Price($)">{{ meds[i].price }}</td>
                 <td scope="row" data-label="Government Pays ($)">{{ meds[i].moh }}</td>
                 {% if monthly_prices[i] == "0.00" %}

@@ -27,9 +27,7 @@ def index():
     final_prices = []
     monthly_prices = []
     if request.method == 'POST':
-        print('test')
         search = request.form['content']
-        print(search)
         
         # code to search for generic name when searched brand name.
         generic_name = db.session.query(Meds).filter(or_(Meds.generic.like('%'+ search +'%'), 
@@ -42,7 +40,6 @@ def index():
 
         meds = db.session.query(Meds).filter(Meds.generic.like('%'+ name +'%')).order_by(Meds.price - Meds.moh).all()
         meds += db.session.query(Meds).filter(Meds.brand.like('%'+ search +'%')).order_by(Meds.price - Meds.moh).all()
-
 
         for med in meds:
             try:

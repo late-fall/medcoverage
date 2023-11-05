@@ -9,8 +9,8 @@
     <h1>How Much Is My Medication? 💊</h1>
     <form action="/" method="POST">
         <input type="text" name="content" id="content" placeholder="Enter Medication Name">
-        <button class="button-9" method="POST"><span class="large__scrn">SEARCH</span><span class="small__scrn">🔍</span></a>
-        <button class="button-9"><a href="/delete"><span class="large__scrn">CLEAR</span><span class="small__scrn">✖</span></a></button>
+        <button class="button-9"><span class="large__scrn">SEARCH</span><span class="small__scrn">🔍</span></a>
+        <button type="button" class="button-9"><a href="/delete"><span class="large__scrn">CLEAR</span><span class="small__scrn">✖</span></a></button>
     </form>
     {% if meds|length < 1 %}
     <h4> Search for your medication above.</h4>
@@ -54,6 +54,7 @@
     
     <h2>Cheapest option is <u>{{ cheapest }}</u></h2>
     {% endif %}
+    
     {% if nomed|length > 1 %}
     <h2>{{ nomed }}</h2>
     {% endif %}

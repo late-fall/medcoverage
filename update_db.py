@@ -2,7 +2,7 @@ from bs4 import BeautifulSoup #pip install beautifulsoup4
 import requests
 import sqlite3
 
-db_file = 'database.db'
+db_file = 'instance/allmeds.db'
 schema_file = 'schema.sql'
 
 with open(schema_file, 'r') as rf:

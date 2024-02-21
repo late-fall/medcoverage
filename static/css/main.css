@@ -1,8 +1,8 @@
-:root {
-    --white: #d3d6db;
-    --greyish: #3a4750;
-    --darkgrey: #303841;
-    --redish: #be3144;
+:root {    
+    --white: #F5F5F5;
+    --greyish: #E0E0E0;
+    --darkgrey: #37474F;
+    --redish: #EF5350;
 }
 
 body, html {

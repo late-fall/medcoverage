@@ -21,11 +21,9 @@ class Meds(db.Model):
 
 @app.route('/', methods=['POST','GET']) # adding methods
 def index():
-    meds = []
-    cheapest = ''
-    nomed = ''
-    final_prices = []
-    monthly_prices = []
+    meds, final_prices, monthly_prices = [], [], []
+    cheapest, nomed = '', ''
+    
     if request.method == 'POST':
         search = request.form['content']
         

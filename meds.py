@@ -1,3 +1,5 @@
+# py file for testing, example keflex
+
 import sqlite3
 
 db_file = 'database.db'
@@ -7,8 +9,6 @@ with sqlite3.connect(db_file) as conn:
     c.execute("SELECT * FROM meds")
     meds = c.fetchall()
     # 0: DIN, 1: Generic, 2: Brand, 3: price, 4: MOH_coverage, 5: LU
-
-# print(meds)
 
 query = 'keflex'
 query.lower()
